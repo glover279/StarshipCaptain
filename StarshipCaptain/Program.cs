@@ -26,9 +26,12 @@ namespace StarshipCaptain
 
     class point
     {
-        int[] x = new int[4];
-        int[] y = new int[4];
-        int[] z = new int[4];
+        public int[] x = new int[4];
+        public int[] y = new int[4];
+        public int[] z = new int[4];
+
+        
+
 
         public void setX(int a, int b, int c, int d)
         {
@@ -48,6 +51,28 @@ namespace StarshipCaptain
             z[0] = a; z[1] = b; z[2] = c; z[3] = d;
 
         }
+    }
+
+    class planet : point
+    {
+        public bool habitable=false; //default not habitable 
+        public int sArea=0; //surface area (millions of km^2): 0 default for non habitable
+
+        public planet()
+        {
+            Random random=new Random();
+            habitable=random.Next(100) % 2 == 0; //randomly set habitable
+
+            if(habitable){
+            Random random1=new Random(); 
+            sArea=random1.Next(1, 100);
+            }
+        }
+    }
+
+    class monster : point
+    {
+
     }
 }
 
