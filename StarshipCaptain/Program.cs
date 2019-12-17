@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace StarshipCaptain
 {
     class Program
     {
-
+        List<point> universe;
         static void Main(string[] args)
         {
             createUniverse();
@@ -21,7 +22,7 @@ namespace StarshipCaptain
         public static void createUniverse()
         {
             //point[] universe = new point[15000]; //convert to list
-            var universe = new List<point>();
+            List<point> universe = new List<point>();
 
             for (int i = 0; i < 15000; i++)
             {
@@ -44,10 +45,20 @@ namespace StarshipCaptain
                 universe[i].setZ(random.Next(0, 999), random.Next(0, 999), random.Next(0, 99), random.Next(0, 9));
                 universe[i].pos = i;
                 Console.WriteLine(universe[i].ToString());
+
+                using (StreamWriter writer = new StreamWriter("./log.txt", true))
+        {
+            writer.WriteLine(universe[i].ToString());
+        }
+
+
             }
 
 
+
         }
+
+    
 
     }
 
